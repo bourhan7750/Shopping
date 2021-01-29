@@ -27,6 +27,7 @@ $title = '商品一覧';
         <td>{{ $item->code }}</td>
         <td>{{ $item->price }}</td>
         <td>{{ $item->amount }}</td>
+        <td>{{ $item->amount }}</td>
       </tr>
       @endforeach
     </table>
