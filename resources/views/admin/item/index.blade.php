@@ -1,37 +1,21 @@
-@php
-$title = '商品一覧';
-@endphp
-
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('content')
-<section>
-  <p>
-    <a href="{{ route('admin.item.create') }}" class="btn btn-outline-primary">{{ __('New') }}</a>
-  </p>
-  <div>
-    <table class="table">
-      <tr>
-        <th></th>
-        <th>{{ __('Item Name') }}</th>
-        <th>{{ __('Item Code') }}</th>
-        <th>{{ __('Price') }}</th>
-        <th>{{ __('Amount') }}</th>
-      </tr>
-      @if (isset($items))
-      <tr>
-        @foreach($items as $item)
-        <td><a href="{{ route('admin.item.edit', ['id' => $item->id]) }}" class="btn btn-outline-primary">{{ __('Edit')
-            }}</a></td>
-        <td>{{ $item->name }}</td>
-        <td>{{ $item->code }}</td>
-        <td>{{ $item->price }}</td>
-        <td>{{ $item->amount }}</td>
-        
-      </tr>
-      @endforeach
-    </table>
-    @endif
-  </div>
-</section>
+    <div class="container">
+        <h2 class="h2">Cart</h2>
+        <a href="{{ route('home') }}" class="btn btn-outline-primary">{{ __('Back') }}</a>
+        <a href="{{ route('cart.clear') }}" class="btn btn-danger">{{ __('Clear') }}</a>
+        <table class="table">
+        @if (isset($items))
+            @foreach ($items as $item)
+            <tr>
+                <td><img src="{{ asset('images/now_printing.jpg') }}" width="50"></td>
+                <td>{{ $item->name }}</td>
+                <td>{{ $item->price }}</td>
+                <td><a href="" class="btn btn-sm btn-danger">{{ __('Delete') }}</a></td>
+            </tr>
+            @endforeach
+        @endif
+        </table>
+    </div>
 @endsection
